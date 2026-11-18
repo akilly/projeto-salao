@@ -10,8 +10,8 @@ A interface foi pensada para uma profissional que registra visitas principalment
 | --- | --- | --- | --- |
 | Fundo | #f7f5f8 | #2c2834 | Base discreta com reflexos suaves |
 | Texto principal | #292333 | #f5f0f8 | Títulos e informações essenciais |
-| Roxo | #74459a | #dbb8f3 | Navegação, referências e ações |
-| Ação preenchida | #78469c | #8553ac | Confirmação e próximo passo |
+| Vermelho (marca) | #a83c46 | #ffb4ba | Navegação, referências e ações |
+| Ação preenchida | #b0444d | #b34650 | Confirmação e próximo passo |
 | Cereja | #b64160 | #ffb1c2 | Pendências que precisam de atenção |
 | Capa | #493052 | #584063 | Resumo do dia com texto claro |
 
@@ -23,7 +23,7 @@ O vidro aparece em superfícies discretas, bordas e painéis. Os campos, número
 - **Agenda:** resumo do dia, seleção semanal, linha de horários e acesso direto a Concluir.
 - **Serviços:** histórico mensal como primeira aba, indicadores do período, resultados acumulados e catálogo em aba separada.
 - **Clientes, estoque e financeiro:** cabeçalhos consistentes, ações contextualizadas, linhas de dados no computador e cartões identificados no celular.
-- **Atendimentos, orçamentos e tarefas:** listas com estados explícitos, hierarquia entre nome, descrição e próximo passo.
+- **Atendimentos, tarefas e lista de compras:** listas com estados explícitos, hierarquia entre nome, descrição e próximo passo.
 - **Configurações e preparação:** grupos de campos com orientação e separação entre configuração inicial e rotina.
 
 Cada página inclui “Como usar esta tela”. A explicação fica próxima ao trabalho e pode ser aberta sem navegar para um manual. Ela descreve a consequência real de cada ação, incluindo a diferença entre preço cobrado e dinheiro recebido.
