@@ -5,65 +5,65 @@
  */
 :root {
   color-scheme: light;
-  --bg: #f3f0f8;
+  --bg: #f8f0f1;
   --paper: #fff;
   --surface: rgba(255, 255, 255, .82);
   --surface-solid: #fff;
-  --surface-soft: #eeebf5;
-  --surface-hover: #e9e3f5;
-  --sidebar: rgba(248, 246, 253, .88);
-  --ink: #302a40;
-  --muted: #6d647b;
-  --line: #ddd6e9;
+  --surface-soft: #f5ebec;
+  --surface-hover: #f5e3e4;
+  --sidebar: rgba(253, 246, 247, .88);
+  --ink: #402a2c;
+  --muted: #7b6466;
+  --line: #e9d6d8;
   --glass-border: rgba(255, 255, 255, .92);
-  --accent: #7046b4;
-  --accent-dark: #5e359f;
-  --accent-soft: #eee6fa;
-  --primary: #7450bb;
-  --primary-hover: #6240a5;
+  --accent: #a83c46;
+  --accent-dark: #93303a;
+  --accent-soft: #fae6e8;
+  --primary: #b0444d;
+  --primary-hover: #9a3640;
   --red: #b73f59;
   --red-soft: #fbe9ee;
   --green: #246e59;
   --green-soft: #e7f2ed;
-  --shadow: 0 8px 30px rgba(72, 49, 109, .045);
+  --shadow: 0 8px 30px rgba(109, 49, 54, .045);
   --radius: 19px;
-  --glow-purple: rgba(165, 127, 232, .20);
+  --glow-accent: rgba(232, 127, 136, .20);
   --glow-red: rgba(232, 144, 168, .15);
-  --focus-ring: #a78bd2;
+  --focus-ring: #d28b91;
   font-family: 'DM Sans', system-ui, sans-serif;
   font-size: 14px;
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #2b2737;
-  --paper: #393345;
-  --surface: rgba(61, 54, 76, .87);
-  --surface-solid: #3c354a;
-  --surface-soft: #443b54;
-  --surface-hover: #504361;
-  --sidebar: rgba(46, 40, 59, .94);
-  --ink: #f3edf9;
-  --muted: #c5bcd2;
-  --line: #5a4e6a;
-  --glass-border: rgba(206, 184, 237, .15);
-  --accent: #d0b4ff;
-  --accent-dark: #e2cdff;
-  --accent-soft: #514061;
-  --primary: #7952c3;
-  --primary-hover: #895fd3;
+  --bg: #372728;
+  --paper: #453334;
+  --surface: rgba(76, 54, 56, .87);
+  --surface-solid: #4a3537;
+  --surface-soft: #543b3d;
+  --surface-hover: #614345;
+  --sidebar: rgba(59, 40, 42, .94);
+  --ink: #f9edee;
+  --muted: #d2bcbe;
+  --line: #6a4e50;
+  --glass-border: rgba(237, 184, 188, .15);
+  --accent: #ffb4ba;
+  --accent-dark: #ffcdd1;
+  --accent-soft: #614043;
+  --primary: #b34650;
+  --primary-hover: #c3525b;
   --red: #ffb1bf;
   --red-soft: #5d3c4e;
   --green: #a4ddc8;
   --green-soft: #334e49;
-  --shadow: 0 8px 30px rgba(20, 14, 30, .12);
-  --glow-purple: rgba(163, 124, 231, .15);
+  --shadow: 0 8px 30px rgba(30, 14, 15, .12);
+  --glow-accent: rgba(231, 124, 133, .15);
   --glow-red: rgba(214, 109, 147, .09);
-  --focus-ring: #c8adf9;
+  --focus-ring: #f9adb3;
 }
 html { background: var(--bg); scroll-padding-top: 90px; }
 body {
   color: var(--ink);
-  background: radial-gradient(ellipse at 85% 4%, var(--glow-purple), transparent 48%),
+  background: radial-gradient(ellipse at 85% 4%, var(--glow-accent), transparent 48%),
     radial-gradient(ellipse at 6% 78%, var(--glow-red), transparent 43%), var(--bg);
   background-attachment: fixed;
   line-height: 1.5;
@@ -96,7 +96,7 @@ small, .small, .tiny { font-size: 12px; }
 .brand { padding: 0 12px 28px; gap: 12px; }
 .brand-mark {
   width: 39px; height: 43px; padding: 0; display: grid; place-items: center;
-  background: linear-gradient(145deg, var(--primary), #ac69ab); color: #fff;
+  background: linear-gradient(145deg, var(--primary), #ac696f); color: #fff;
   border-radius: 13px; font: italic 34px Georgia, serif; letter-spacing: -3px;
   box-shadow: 0 5px 16px #7450bb24;
 }
@@ -296,7 +296,7 @@ input[readonly] { background: var(--surface-soft); }
 .day-ribbon button.active { background: var(--primary); color: #fff; }
 .day-ribbon button.active strong { color: #fff; }
 dialog { color: var(--ink); background: var(--surface-solid); border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 25px 90px #1f142b45; }
-dialog::backdrop { background: rgba(30, 22, 42, .36); backdrop-filter: blur(7px); }
+dialog::backdrop { background: rgba(42, 22, 24, .36); backdrop-filter: blur(7px); }
 dialog .dialog-head, dialog .dialog-footer { border-color: var(--line); background: var(--surface-solid); }
 dialog .dialog-head h2 { font: 750 18px Manrope, system-ui, sans-serif; letter-spacing: -.4px; }
 .dialog-footer { gap: 10px; }
