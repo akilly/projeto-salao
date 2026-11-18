@@ -1,6 +1,6 @@
 # Documentação técnica · Hanne Essencial
 
-Referência de manutenção da versão essencial do Hanne: atendimentos (WhatsApp e notas internas), orçamentos, tarefas, estoque e serviços. Ela nasceu do sistema completo (`akilly/Projeto-gestao-salao`) retirando agenda, cadastro de clientes e financeiro. Operação diária: MANUAL_USUARIO.md. Arquivos: MAPA_ARQUIVOS.md.
+Referência de manutenção da versão essencial do Hanne: atendimentos (WhatsApp e notas internas), tarefas e lista de compras. Ela nasceu do sistema completo (`akilly/Projeto-gestao-salao`) retirando agenda, cadastro de clientes e financeiro; no `schema 4` saíram também orçamentos, serviços e estoque. Operação diária: MANUAL_USUARIO.md. Arquivos: MAPA_ARQUIVOS.md.
 
 ## Arquitetura e execução
 
@@ -14,30 +14,21 @@ Fluxo de leitura: autenticação → GET da base selecionada → carregamento no
 
 ## Estado e relacionamentos
 
-O agregado salvo por conta é o `schema 3` (`public/domain.js`):
+O agregado salvo por conta é o `schema 4` (`public/domain.js`). Estados no `schema 3` são convertidos por `migrateState` na leitura da API, no carregamento do navegador e na restauração de cópia JSON: orçamentos, serviços, produtos e movimentos são descartados; `quoteId` sai das tarefas; as áreas Estoque/Orçamento/Serviços viram Compras/Operação/Operação.
 
 | Coleção | Campos principais |
 |---|---|
 | `settings` | `name`, `responseMinutes` |
-| `services` | `name`, `description`, `duration`, `products`, `before`, `after` |
 | `conversations` | Notas internas de atendimento: `contact`, `category`, `status` (`open`, `waiting`, `resolved`), `messages[]` (`incoming` ou `note`), `summary`, `summaryAI`, `draft` |
-| `quotes` | `contact`, `origin`, `serviceId` (ou `null` com `serviceName`), `status` (`missing`, `review`, `approved`, `closed`), `value`, `date`, `notes`, `question`, `photos[]` (data URL, até 3) |
-| `tasks` | `title`, `area`, `priority`, `due`, `done`, `contact` (opcional), `origin`, `quoteId` |
-| `products` | `name`, `brand`, `unit` (`g`, `ml`, `un`), `packageSize`, `minimum` |
-| `movements` | `productId`, `type` (`opening`, `purchase`, `use`, `loss`, `valuation`), `date`, `quantity` (negativa nas saídas), `unitCost` (ou `null`), `total`, `note` |
+| `tasks` | `title`, `area` (`Atendimento`, `Compras`, `Operação`), `priority`, `due`, `done`, `contact` (opcional), `origin` |
+| `shopping` | Lista de compras: `name` (até 120), `note` (opcional, até 200), `done` |
 | `audit` | Até 200 ações recentes (o servidor acrescenta o evento de cada gravação) |
 
-**Contato** é `{ name, phone }`: nome obrigatório (até 100), telefone opcional com 10 a 15 dígitos. Não existe coleção de clientes; `knownContacts` monta as sugestões a partir de notas, orçamentos, tarefas e das conversas do WhatsApp já carregadas.
+**Contato** é `{ name, phone }`: nome obrigatório (até 100), telefone opcional com 10 a 15 dígitos. Não existe coleção de clientes; `knownContacts` monta as sugestões a partir de notas, tarefas e das conversas do WhatsApp já carregadas.
 
 **Origem** é `{ type: 'whatsapp' | 'note', id }`. Para `note`, o id precisa existir em `conversations`; para `whatsapp`, é o id da conversa no canal (tabela `wa_threads`), que não é validado contra o agregado.
 
-`validateState` confere formato, ids únicos, contatos, origens, referências (serviço, orçamento), fotos e o livro de estoque. Com a versão anterior, recusa remoções com vínculo (`deletionBlock`) e qualquer movimento removido ou com produto/tipo trocado.
-
-## Estoque e custo
-
-`stockOf` refaz saldo e custo médio ponderado na ordem dos movimentos. Entradas com custo desconhecido deixam o custo `null` (“a conferir”) até uma conferência (`valuation`) ou até o saldo zerar. Saídas (`use`, `loss`) guardam o custo médio do momento. `stockEntry` cria entrada, uso, perda ou conferência numa cópia do estado, recusando datas anteriores ao último movimento do produto, datas futuras e saídas maiores que o saldo. Compras não geram despesa.
-
-Ao corrigir um movimento, `recost` recalcula o custo registrado em todas as saídas seguintes; o servidor confere o resultado com o mesmo algoritmo. Estoque negativo, data futura, ordem cronológica quebrada e custo divergente são recusados.
+`validateState` confere formato, ids únicos, contatos, origens e os itens da lista de compras. Com a versão anterior, recusa remoções com vínculo (`deletionBlock`). Itens da lista não têm vínculos e podem sair numa gravação comum.
 
 ## Contrato da API
 
@@ -78,7 +69,7 @@ Provedor na tela: **Baileys** em modo "o conector chama o site". O processo Node
 
 A API oficial da Meta continua no servidor, testada, sem botão na tela atual (`INTEGRACAO_WHATSAPP.md`). A migração 0002 adicionou o provedor e os marcos verificáveis de recebimento da Meta. O adaptador YCloud foi removido em 30/10/2026.
 
-Nas conversas do WhatsApp, os botões **Criar orçamento** e **Criar tarefa** chamam `onCreate` (passado por `app.js`) com nome, telefone (`peer`), id da conversa e o resumo da IA, quando houver. `whatsapp.open(id)` abre uma conversa a partir da origem de um orçamento ou tarefa.
+Nas conversas do WhatsApp, o botão **Criar tarefa** chama `onCreate` (passado por `app.js`) com nome, telefone (`peer`), id da conversa e o resumo da IA, quando houver. `whatsapp.open(id)` abre uma conversa a partir da origem de uma tarefa.
 
 ## Exclusões
 

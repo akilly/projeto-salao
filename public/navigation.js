@@ -1,6 +1,6 @@
 /** Destinos de consulta. A URL transporta páginas, abas, filtros e IDs, nunca nomes ou telefones. */
-const pages = ['dashboard', 'conversations', 'inventory', 'services', 'quotes', 'tasks', 'settings'];
-const keys = ['page', 'tab', 'scope', 'product', 'quote', 'task', 'service', 'p'];
+const pages = ['dashboard', 'conversations', 'tasks', 'shopping', 'settings'];
+const keys = ['page', 'tab', 'scope', 'task', 'p'];
 
 /** URL interna compatível com nova aba, atualização da página e histórico do navegador. */
 export function destinationHref(target) {

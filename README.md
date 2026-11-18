@@ -1,8 +1,8 @@
 # Hanne Essencial · Atendimento do ateliê
 
-Versão enxuta do [Hanne](https://github.com/akilly/Projeto-gestao-salao), focada no atendimento: **Atendimentos pelo WhatsApp**, **Orçamentos**, **Tarefas**, **Estoque** e **Serviços**. Sistema web em português, pensado primeiro para o celular, com temas claro e escuro.
+Versão enxuta do [Hanne](https://github.com/akilly/Projeto-gestao-salao), focada no atendimento: **Atendimentos pelo WhatsApp**, **Tarefas** e **Lista de compras**. Sistema web em português, pensado primeiro para o celular, com temas claro e escuro.
 
-Saíram desta versão: **agenda, cadastro de clientes, financeiro** (cobranças, pagamentos, sinais, cartões, despesas) e o histórico de procedimentos realizados.
+Saíram desta versão: **agenda, cadastro de clientes, financeiro** (cobranças, pagamentos, sinais, cartões, despesas), o histórico de procedimentos realizados e, desde o `schema 4`, **orçamentos, catálogo de serviços e controle de estoque** (o estoque virou uma lista de compras simples).
 
 - **Hospedagem:** Cloudflare Workers (Vinext/Vite) + banco D1 + Workers KV (anexos do WhatsApp). Cabe no plano gratuito.
 - **Testar no seu computador:** duplo clique em `INICIAR-HANNE.cmd` ([guia](docs/RODAR_NO_PC.md)).
@@ -13,19 +13,17 @@ Saíram desta versão: **agenda, cadastro de clientes, financeiro** (cobranças,
 
 | Área | Resumo |
 |---|---|
-| Visão geral | Atendimentos pendentes, orçamentos em andamento, tarefas de hoje e atrasadas, estoque baixo |
+| Visão geral | Atendimentos pendentes, tarefas de hoje e atrasadas, itens para comprar |
 | Atendimentos | Duas abas, como no sistema completo: **WhatsApp** (conector no computador do ateliê, QR Code, envio de texto/imagem/áudio, IA que classifica, resume e sugere resposta) e **Notas internas** (pedidos de outros canais, notas, classificação, resumo e rascunho com IA, link wa.me) |
-| Orçamentos | Contato, serviço, etapa (faltam informações, em avaliação, avaliado, encerrado), valor, perguntas e até 3 fotos; perguntas enviadas pelo WhatsApp com a mensagem pronta |
-| Tarefas | Prazo, prioridade, área, contato, orçamento relacionado e conversa de origem |
-| Estoque | Produtos em g/ml/unidade, saldo inicial, entradas (com custo opcional), uso, perda, conferência de custo, custo médio e alerta de mínimo |
-| Serviços | Catálogo: nome, descrição, duração, produtos e orientações antes/depois |
+| Tarefas | Prazo, prioridade, área (Atendimento, Compras, Operação), contato e conversa de origem |
+| Lista de compras | Item, observação opcional (quantidade, marca, tamanho), marcar como comprado, tirar da lista e limpar comprados |
 | Configurações | Nome do ateliê, conta, salões, tema, exportações (CSV, PDF, JSON), restauração e histórico |
 
 ### Sem cadastro de clientes
 
-Cada orçamento, tarefa e nota guarda o **contato** (nome e telefone) e, quando existir, a **origem**: a conversa do WhatsApp ou a nota interna de onde saiu. Nas conversas há os botões **Criar orçamento** e **Criar tarefa**, que já preenchem o contato e o vínculo; no orçamento ou na tarefa, **Abrir conversa** volta para ela. Os nomes já usados aparecem como sugestão ao digitar.
+Cada tarefa e nota guarda o **contato** (nome e telefone) e, quando existir, a **origem**: a conversa do WhatsApp ou a nota interna de onde saiu. Nas conversas há o botão **Criar tarefa**, que já preenche o contato e o vínculo; na tarefa, **Abrir conversa** volta para ela. Os nomes já usados aparecem como sugestão ao digitar.
 
-Toda exclusão pede confirmação **e a senha da conta**, e mostra antes tudo o que será apagado ou desvinculado.
+A exclusão de notas, tarefas e histórico pede confirmação **e a senha da conta**, e mostra antes tudo o que será apagado ou desvinculado. Itens da lista de compras saem direto, porque não têm vínculos.
 
 ## Como rodar no computador (desenvolvimento)
 
@@ -65,10 +63,9 @@ Detalhes de cada arquivo: [docs/MAPA_ARQUIVOS.md](docs/MAPA_ARQUIVOS.md).
 
 - **Vários salões:** cada conta é um salão com dados separados. A primeira conta é a titular, que convida os outros salões (Configurações → Salões).
 - **Gravação segura:** o estado é salvo no D1 com revisão otimista e auditoria na mesma transação. Edição concorrente gera conflito explícito, sem perder o rascunho.
-- **Estoque consistente:** o livro de movimentos é refeito a cada gravação; saldo negativo, datas fora de ordem ou custo divergente são recusados no navegador e no servidor. Corrigir um movimento recalcula o custo das saídas seguintes.
 - **Demonstração isolada:** `/?dados=exemplo` usa outra base; a API recusa gravar dados fictícios na base real.
-- **Limites:** 3 MB por gravação, 10 mil itens por coleção, até 3 fotos de 500 KB por orçamento.
-- **Formato próprio:** o estado desta versão é o `schema 3`. Ele não é compatível com cópias JSON do sistema completo (que tinham clientes, agenda e financeiro).
+- **Limites:** 3 MB por gravação, 10 mil itens por coleção.
+- **Formato próprio:** o estado desta versão é o `schema 4`. Contas e cópias JSON no `schema 3` são convertidas automaticamente ao abrir (`migrateState` em `public/domain.js`): atendimentos, tarefas, configurações e histórico continuam; orçamentos, serviços, produtos e movimentos de estoque são descartados; tarefas das áreas Estoque/Orçamento/Serviços passam para Compras/Operação. Não é compatível com cópias do sistema completo (clientes, agenda e financeiro).
 
 ## Inteligência artificial
 
