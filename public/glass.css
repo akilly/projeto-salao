@@ -2,98 +2,98 @@
  * Hanne · camada "vidro de ateliê" (v18).
  * Carregada por último: troca tokens de cor e a pintura das superfícies, sem mexer em layout ou regras de negócio.
  * Vidro equilibrado: menu, barra do topo, janelas, cartões de destaque e gráficos. Tabelas e formulários ficam sólidos para leitura.
- * Tema escuro quase preto; o roxo da marca fica nos destaques.
+ * Tema escuro quase preto; o vermelho da marca fica nos destaques.
  */
 
 /* ---------- Tokens ---------- */
 :root {
-  --bg: #f2f1f7;
+  --bg: #f7f1f1;
   --paper: #ffffff;
-  --ink: #1e1b27;
-  --muted: #69647a;
-  --line: #e4e1ec;
-  --line-strong: #d6d1e2;
+  --ink: #271b1c;
+  --muted: #7a6466;
+  --line: #ece1e2;
+  --line-strong: #e2d1d2;
   --surface: rgba(255, 255, 255, .78);
   --surface-solid: #ffffff;
-  --surface-soft: #f5f3f9;
-  --surface-hover: #efebf7;
+  --surface-soft: #f9f3f3;
+  --surface-hover: #f7ebec;
   --sidebar: rgba(255, 255, 255, .6);
-  --accent: #6e43b3;
-  --accent-dark: #57309a;
-  --accent-soft: #efe9fa;
-  --primary: #6e43b3;
-  --primary-hover: #5d34a2;
+  --accent: #a83c46;
+  --accent-dark: #93303a;
+  --accent-soft: #fae9ea;
+  --primary: #b0444d;
+  --primary-hover: #9a3640;
   --red: #b3354f;
   --red-soft: #fcecef;
   --green: #1f6b55;
   --green-soft: #e6f3ee;
-  --focus-ring: #9c7ae0;
-  --hero: #2a1d3f;
-  --hero-muted: #d9cdef;
+  --focus-ring: #e07a82;
+  --hero: #3f1d20;
+  --hero-muted: #efcdd0;
   --radius: 16px;
-  --shadow: 0 1px 2px rgba(30, 20, 60, .04), 0 8px 24px -12px rgba(45, 25, 90, .12);
+  --shadow: 0 1px 2px rgba(60, 20, 23, .04), 0 8px 24px -12px rgba(90, 25, 30, .12);
 
   /* receita do vidro */
   --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, .5), rgba(255, 255, 255, .08) 38%, rgba(255, 255, 255, 0) 62%, rgba(255, 255, 255, .22)), linear-gradient(180deg, rgba(255, 255, 255, .64), rgba(255, 255, 255, .46));
   --glass-tint: rgba(255, 255, 255, .46);
   --glass-tint-edge: rgba(255, 255, 255, .7);
-  --row-hover: rgba(110, 67, 179, .05);
+  --row-hover: rgba(179, 67, 76, .05);
   --field-bg: rgba(255, 255, 255, .86);
   --glass-edge: rgba(255, 255, 255, .78);
   --glass-shine: inset 0 1px 0 rgba(255, 255, 255, .95), inset 0 0 0 1px rgba(255, 255, 255, .25);
-  --glass-drop: 0 1px 1px rgba(30, 20, 60, .03), 0 18px 40px -22px rgba(60, 30, 120, .28);
+  --glass-drop: 0 1px 1px rgba(60, 20, 23, .03), 0 18px 40px -22px rgba(120, 30, 37, .28);
   --glass-blur: blur(22px) saturate(170%);
 
   /* luz ambiente atrás do vidro */
-  --aura-1: rgba(140, 92, 230, .26);
+  --aura-1: rgba(230, 92, 103, .26);
   --aura-2: rgba(236, 120, 160, .14);
   --aura-3: rgba(90, 140, 240, .10);
-  --aura-4: rgba(170, 120, 240, .16);
+  --aura-4: rgba(240, 120, 130, .16);
 }
 :root[data-theme="dark"] {
-  --bg: #0e0d12;
-  --paper: #17151e;
-  --ink: #eeecf3;
-  --muted: #a29dae;
-  --line: #26232f;
-  --line-strong: #35313f;
-  --surface: rgba(23, 21, 30, .82);
-  --surface-solid: #17151e;
-  --surface-soft: #1d1a25;
-  --surface-hover: #24202e;
-  --sidebar: rgba(18, 16, 24, .6);
-  --accent: #b39af5;
-  --accent-dark: #cdbcff;
-  --accent-soft: rgba(150, 112, 236, .16);
-  --primary: #7650c9;
-  --primary-hover: #8661d6;
+  --bg: #120d0d;
+  --paper: #1e1516;
+  --ink: #f3eced;
+  --muted: #ae9d9e;
+  --line: #2f2324;
+  --line-strong: #3f3132;
+  --surface: rgba(30, 21, 22, .82);
+  --surface-solid: #1e1516;
+  --surface-soft: #251a1b;
+  --surface-hover: #2e2021;
+  --sidebar: rgba(24, 16, 17, .6);
+  --accent: #f59aa2;
+  --accent-dark: #ffbcc2;
+  --accent-soft: rgba(236, 112, 122, .16);
+  --primary: #b34650;
+  --primary-hover: #c3525b;
   --red: #f290a4;
   --red-soft: rgba(242, 144, 164, .12);
   --green: #7fd3b5;
   --green-soft: rgba(127, 211, 181, .12);
-  --focus-ring: #b39af5;
-  --hero: #17131f;
-  --hero-muted: #c9bde3;
+  --focus-ring: #f59aa2;
+  --hero: #1f1314;
+  --hero-muted: #e3bdc0;
   --shadow: 0 1px 0 rgba(255, 255, 255, .03) inset, 0 12px 28px -16px rgba(0, 0, 0, .7);
-  --scroll-thumb: #3a3546;
-  --scroll-track: #121017;
-  --scroll-hover: #554d66;
-  --scroll-active: #7650c9;
+  --scroll-thumb: #463536;
+  --scroll-track: #171011;
+  --scroll-hover: #664d4f;
+  --scroll-active: #c9505a;
 
-  --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .015) 38%, rgba(255, 255, 255, 0) 62%, rgba(255, 255, 255, .03)), linear-gradient(180deg, rgba(30, 27, 40, .66), rgba(18, 16, 25, .58));
+  --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .015) 38%, rgba(255, 255, 255, 0) 62%, rgba(255, 255, 255, .03)), linear-gradient(180deg, rgba(40, 27, 28, .66), rgba(25, 16, 17, .58));
   --glass-tint: rgba(255, 255, 255, .035);
   --glass-tint-edge: rgba(255, 255, 255, .07);
   --row-hover: rgba(255, 255, 255, .035);
-  --field-bg: rgba(8, 7, 12, .5);
+  --field-bg: rgba(12, 7, 7, .5);
   --glass-edge: rgba(255, 255, 255, .07);
   --glass-shine: inset 0 1px 0 rgba(255, 255, 255, .08), inset 0 0 0 1px rgba(255, 255, 255, .02);
   --glass-drop: 0 24px 48px -24px rgba(0, 0, 0, .8);
   --glass-blur: blur(24px) saturate(150%);
 
-  --aura-1: rgba(118, 80, 201, .20);
+  --aura-1: rgba(201, 80, 90, .20);
   --aura-2: rgba(200, 80, 140, .08);
   --aura-3: rgba(60, 90, 200, .07);
-  --aura-4: rgba(118, 80, 201, .10);
+  --aura-4: rgba(201, 80, 90, .10);
 }
 
 /* ---------- Fundo com luz ambiente (dá o que o vidro refratar) ---------- */
@@ -135,7 +135,7 @@ html .dataset-banner .btn { margin: 0; flex-shrink: 0; padding: 8px 12px; border
 html .dataset-banner .btn:hover { background: var(--accent-soft); }
 @media (max-width: 640px) { html .dataset-banner { padding: 10px 12px; margin-bottom: 18px; } }
 html dialog { border-radius: 22px; }
-html dialog::backdrop { background: rgba(14, 10, 24, .32); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+html dialog::backdrop { background: rgba(24, 10, 11, .32); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
 :root[data-theme="dark"] dialog::backdrop { background: rgba(0, 0, 0, .55); }
 html dialog .dialog-head, html dialog .dialog-footer { background: transparent; border-color: var(--line); }
 /* Dentro da janela o conteúdo é lido: os campos ficam sólidos. */
@@ -166,7 +166,7 @@ html .data-table, html .data-table thead, html .data-table th, html .data-table 
 html .data-table tbody tr:hover { background: var(--row-hover); }
 html .card input:not([type=checkbox]):not([type=radio]), html .card select, html .card textarea,
 html .toolbar input:not([type=checkbox]):not([type=radio]), html .toolbar select, html .period-toolbar input, html .page-guide input { background: var(--field-bg); }
-html .segmented button.active, html .segmented [aria-pressed="true"] { background: var(--surface-solid); box-shadow: 0 1px 2px rgba(20, 10, 40, .14); }
+html .segmented button.active, html .segmented [aria-pressed="true"] { background: var(--surface-solid); box-shadow: 0 1px 2px rgba(40, 10, 12, .14); }
 :root[data-theme="dark"] .segmented button.active, :root[data-theme="dark"] .segmented [aria-pressed="true"] { background: rgba(255, 255, 255, .09); }
 html .stat, html .attention-card, html .chart-card, html .stat-link { border-radius: 18px; }
 
@@ -188,12 +188,12 @@ html .nav button.active {
   font-weight: 650;
   background: var(--glass-bg);
   border-color: var(--glass-edge);
-  box-shadow: var(--glass-shine), 0 6px 16px -10px rgba(80, 40, 160, .45);
+  box-shadow: var(--glass-shine), 0 6px 16px -10px rgba(160, 40, 50, .45);
 }
 html .nav button.active .icon { color: var(--accent); }
 html .nav button.active::after { background: var(--accent); }
 html .focus-box { background: transparent; border: 1px solid var(--line); }
-html .brand-mark { background: linear-gradient(145deg, #8a5ad6, #5b31a0); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35), 0 6px 14px -6px rgba(91, 49, 160, .7); }
+html .brand-mark { background: linear-gradient(145deg, #d65a64, #a0313a); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35), 0 6px 14px -6px rgba(160, 49, 58, .7); }
 
 /* ---------- Botões e campos ---------- */
 html .btn { border-radius: 10px; }
@@ -201,10 +201,10 @@ html .btn.primary {
   color: #fff;
   background: linear-gradient(180deg, color-mix(in srgb, var(--primary) 86%, #fff), var(--primary));
   border-color: transparent;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .28), 0 1px 2px rgba(30, 10, 60, .2), 0 6px 16px -8px color-mix(in srgb, var(--primary) 80%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .28), 0 1px 2px rgba(60, 10, 14, .2), 0 6px 16px -8px color-mix(in srgb, var(--primary) 80%, transparent);
 }
 html .btn.primary:hover { background: linear-gradient(180deg, color-mix(in srgb, var(--primary-hover) 86%, #fff), var(--primary-hover)); }
-html .btn.secondary { background: var(--surface-solid); border-color: var(--line-strong); color: var(--ink); box-shadow: 0 1px 1px rgba(20, 10, 40, .04); }
+html .btn.secondary { background: var(--surface-solid); border-color: var(--line-strong); color: var(--ink); box-shadow: 0 1px 1px rgba(40, 10, 12, .04); }
 html .btn.secondary:hover { background: var(--surface-hover); }
 html .btn.danger { background: transparent; color: var(--red); border-color: color-mix(in srgb, var(--red) 35%, transparent); }
 html .btn.danger:hover { background: var(--red-soft); }
@@ -217,7 +217,7 @@ html input:not([type=checkbox]):not([type=radio]), html select, html textarea {
 html input:not([type=checkbox]):not([type=radio]):focus, html select:focus, html textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
 html .search-trigger { background: var(--surface-solid); border-color: var(--line); }
 html .theme-control { background: var(--surface-soft); border: 1px solid var(--line); }
-html .theme-control button.active, html .theme-control button[aria-pressed="true"] { background: var(--surface-solid); color: var(--ink); box-shadow: 0 1px 2px rgba(20, 10, 40, .12); }
+html .theme-control button.active, html .theme-control button[aria-pressed="true"] { background: var(--surface-solid); color: var(--ink); box-shadow: 0 1px 2px rgba(40, 10, 12, .12); }
 
 /* ---------- Tabelas ---------- */
 html .data-table th { color: var(--muted); font-weight: 600; text-transform: none; letter-spacing: 0; background: transparent; border-bottom: 1px solid var(--line); }
@@ -228,18 +228,18 @@ html .pill { border-radius: 999px; }
 /* ---------- Abertura do painel: o único lugar com luz forte ---------- */
 html .atelier-welcome {
   background:
-    radial-gradient(520px 320px at 92% -10%, rgba(178, 132, 255, .55), transparent 60%),
+    radial-gradient(520px 320px at 92% -10%, rgba(255, 132, 142, .55), transparent 60%),
     radial-gradient(420px 300px at 10% 120%, rgba(236, 120, 170, .28), transparent 60%),
-    linear-gradient(135deg, #2c1b48, #1f1630 60%, #241a35);
+    linear-gradient(135deg, #481b1f, #301618 60%, #351a1c);
   border: 1px solid rgba(255, 255, 255, .08);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 30px 60px -30px rgba(40, 15, 90, .65);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 30px 60px -30px rgba(90, 15, 21, .65);
   border-radius: 24px;
 }
 :root[data-theme="dark"] .atelier-welcome {
   background:
-    radial-gradient(520px 320px at 92% -10%, rgba(150, 105, 240, .38), transparent 60%),
+    radial-gradient(520px 320px at 92% -10%, rgba(240, 105, 116, .38), transparent 60%),
     radial-gradient(420px 300px at 10% 120%, rgba(200, 80, 150, .14), transparent 60%),
-    linear-gradient(135deg, #1a1426, #121018 65%);
+    linear-gradient(135deg, #261415, #181011 65%);
   border-color: rgba(255, 255, 255, .06);
 }
 html .atelier-welcome::before { border-color: rgba(255, 255, 255, .06); }
@@ -252,7 +252,7 @@ html .welcome-day {
   -webkit-backdrop-filter: blur(18px) saturate(180%);
   backdrop-filter: blur(18px) saturate(180%);
 }
-html .welcome-actions .btn.primary { background: #fff; color: #3d2366; box-shadow: inset 0 -1px 0 rgba(60, 30, 110, .12), 0 8px 20px -10px rgba(0, 0, 0, .5); }
+html .welcome-actions .btn.primary { background: #fff; color: #662329; box-shadow: inset 0 -1px 0 rgba(110, 30, 37, .12), 0 8px 20px -10px rgba(0, 0, 0, .5); }
 html .welcome-actions .btn.secondary, html .welcome-actions .btn:not(.primary) { background: rgba(255, 255, 255, .08); color: #fff; border-color: rgba(255, 255, 255, .24); }
 
 /* ---------- Indicadores ---------- */
@@ -268,7 +268,7 @@ h1[tabindex="-1"]:focus, h1[tabindex="-1"]:focus-visible { outline: none; }
 :root[data-theme="dark"] .btn.secondary { background: var(--surface-soft); border-color: var(--line-strong); }
 :root[data-theme="dark"] .btn.secondary:hover { background: var(--surface-hover); }
 :root[data-theme="dark"] .nav button.active { box-shadow: var(--glass-shine), 0 8px 20px -12px rgba(0, 0, 0, .9); }
-:root[data-theme="dark"] .fin-charts { --chart-grid: #221f2b; --chart-track: #221f2b; }
+:root[data-theme="dark"] .fin-charts { --chart-grid: #2b1f20; --chart-track: #2b1f20; }
 :root[data-theme="dark"] .brand-mark { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 0 0 1px rgba(255, 255, 255, .06); }
 
 @media (prefers-reduced-motion: reduce) { html * { transition-duration: 0s !important; } }
@@ -306,3 +306,12 @@ html .wa-onboarding .wa-checklist { display: grid; grid-template-columns: 1fr; g
 html .wa-onboarding .wa-checklist li { display: block; padding: 10px 12px; border-radius: 12px; background: var(--glass-tint); border: 1px solid var(--glass-tint-edge); }
 html .wa-onboarding .wa-checklist li strong { display: block; margin-bottom: 2px; }
 html .wa-onboarding .wa-checklist li p { margin: 0; color: var(--muted); }
+
+/* Lista de compras: formulário de inclusão rápida em uma linha (empilha no celular) */
+.shopping-add { display: grid; grid-template-columns: 2fr 2fr auto; gap: 12px; align-items: end; padding: 18px 20px; }
+.shopping-add .btn { height: 42px; }
+.shopping-row .icon-btn { flex-shrink: 0; }
+@media (max-width: 720px) { .shopping-add { grid-template-columns: 1fr; } .shopping-add .btn { width: 100%; justify-content: center; } }
+/* Visão geral com três indicadores (sem orçamentos e estoque) */
+@media (min-width: 761px) { .stats.three { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .stats.three > :last-child { grid-column: 1 / -1; } }
