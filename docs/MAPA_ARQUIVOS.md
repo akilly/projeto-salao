@@ -33,13 +33,13 @@ O que cada arquivo versionado faz. Cada módulo também tem um comentário de ca
 
 | Arquivo | Papel |
 |---|---|
-| `app.js` | Aplicativo: estado, páginas (Visão geral, Atendimentos, Orçamentos, Tarefas, Estoque, Serviços, Configurações), formulários, eventos `data-action`/`data-form`, gravação em fila, exclusão confirmada |
-| `domain.js` | Regras compartilhadas com o servidor: estado vazio (`schema 3`), contatos e origens, livro de estoque (`stockOf`, `stockEntry`, `recost`), `validateState` |
+| `app.js` | Aplicativo: estado, páginas (Visão geral, Atendimentos, Tarefas, Lista de compras, Configurações), formulários, eventos `data-action`/`data-form`, gravação em fila, exclusão confirmada |
+| `domain.js` | Regras compartilhadas com o servidor: estado vazio (`schema 4`), migração do `schema 3` (`migrateState`), contatos e origens, `validateState` |
 | `deletion.js` | Bloqueios, plano de exclusão em cascata e desvinculação |
 | `core.js` | Data de Brasília, soma de dias e células CSV |
 | `navigation.js` | URLs internas (`#page=…`) e paginação |
 | `wa-link.js` | Link wa.me com mensagem pronta |
-| `whatsapp.js` | Caixa do WhatsApp integrada (conector Baileys), com Criar orçamento / Criar tarefa |
+| `whatsapp.js` | Caixa do WhatsApp integrada (conector Baileys), com Criar tarefa |
 | `form-validation.js` | Mensagens de validação em português, sem balões nativos |
 | `theme.js`, `theme-boot.js` | Tema claro/escuro salvo no navegador |
 | `examples.js` | Dados fictícios da demonstração |
@@ -79,7 +79,7 @@ O que cada arquivo versionado faz. Cada módulo também tem um comentário de ca
 
 | Arquivo | Cobre |
 |---|---|
-| `domain.test.mjs` | Contatos, orçamentos, tarefas, entradas/saídas, custo médio e recálculo |
+| `domain.test.mjs` | Contatos, tarefas, lista de compras e migração do formato antigo |
 | `deletion.test.mjs` | Bloqueios, cascata, desvinculação e plano sem efeitos colaterais |
 | `examples.test.mjs`, `core.test.mjs`, `navigation.test.mjs` | Demonstração, utilitários e destinos internos |
 | `persistence.test.mjs`, `salon-auth.test.mjs` | API, isolamento de contas, login, sessões e exclusão com senha (SQLite real) |

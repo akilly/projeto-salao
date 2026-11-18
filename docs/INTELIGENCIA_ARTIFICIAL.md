@@ -11,7 +11,7 @@ A IA ajuda a organizar o atendimento. Ela **só sugere**: nada é enviado à cli
 | **Resumo** | Botão **Resumir com IA** (WhatsApp e notas) | Até 3 frases: o que a cliente quer, o que já foi combinado e o que falta responder. |
 | **Sugestão de resposta** | Botão **Sugerir resposta** | No WhatsApp, o texto vai para o campo de resposta. Nas notas, vira o rascunho. Revise, edite e só então envie. |
 
-A IA recebe o histórico da conversa (até 20 mensagens) e um pouco de contexto do sistema: nome do ateliê, nome do contato e o que está em aberto para ele (orçamentos e tarefas). Assim a resposta já sai personalizada. Ela é orientada a não inventar preços, horários nem diagnósticos.
+A IA recebe o histórico da conversa (até 20 mensagens) e um pouco de contexto do sistema: nome do ateliê, nome do contato e as tarefas em aberto para ele. Assim a resposta já sai personalizada. Ela é orientada a não inventar preços, horários nem diagnósticos.
 
 ## Custo e limites
 
